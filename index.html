@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSockets</title>
+    <style>
+      body {
+        font-family: "Roboto Light";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+      }
+      h1 {
+        margin-bottom: 0;
+      }
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      li {
+        width: 50%;
+        margin: 0.5em 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WebSocket Basics</h1>
+    <ul class="tsummary">
+      <li>
+        allows two-way, event-driven communication between browser and server
+      </li>
+      <li>great for <strong>real-time</strong> applications</li>
+      <li>
+        after this tutorial, you should be able to create a simple WebSockets
+        app
+      </li>
+    </ul>
+    <script>
+      const ws = new WebSocket("ws://localhost:8082");
+      ws.addEventListener("open", () => {
+        console.log("we are connected!");
+        ws.send("hey, how's it going?");
+      });
+
+      ws.addEventListener("message", ({ data }) => {
+        console.log(data);
+      });
+      console.log("HELLO");
+    </script>
+  </body>
+</html>
